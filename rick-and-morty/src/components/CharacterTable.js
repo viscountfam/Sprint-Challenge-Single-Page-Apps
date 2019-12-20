@@ -6,32 +6,33 @@ export default function CharacterTable() {
     const [character, setCharacter] = useState ([]);
 
 
-useEffect(() => {
-    axios
-        .get("https://rickandmortyapi.com/api/character/")
-        .then(response => {
-            console.log(response);
-            setCharacter(response.data.results);
-        })
-        .catch(error => {
-            console.log("data could not be retrieved", error);
-        })
-}, []);
+useEffect(() =>{
+            axios
+            .get('https://rickandmortyapi.com/api/character/')
+            .then(response => {
+              console.log(response)
+              setCharacter(Object.values(response.data.results));
+            })
+    
+        }, []);
 
     return (
-        <Link to={`/characters/${character.id}`}>
+        
             <div className="container">
                 <div className="entry">
                     {character.map((character, index) => {
-                        return <CharacterCard key={index}
+                        return (
+                        <Link to={`/characters/${character.id}`}>
+                         <CharacterCard key={index}
                         name={character.name} 
                         species={character.species}
                         gender={character.gender}
                         status={character.status}
                         />
+                        </Link>
+                        )
                     })}
                 </div>
             </div>
-        </Link>
     );
 }

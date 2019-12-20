@@ -4,24 +4,24 @@ import logo from './logo.svg';
 import Navigation from './components/Navigation';
 import Welcome from './components/Welcome';
 import CharacterTable from './components/CharacterTable';
-import Character from './components/Character';
+// import Character from './components/Character';
 import './App.css';
 
 function App() {
   return (
     <>
     <Navigation />
-    <Switch>
-      <Route path="/Characters/:id">
-        <Character />
-      </Route>
-      <Route path="/Characters">
+      
+      
+      <Route  exact path="/characters">
         <CharacterTable />
       </Route>
       <Route exact path="/">
         <Welcome />
       </Route>
-    </Switch>
+      {/* <Route  exact path="/characters/:id">
+        <Character />
+        </Route> */}
     </>
   );
 }
